@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   namespace :auth do
     resources :sessions, only: %i[index]
   end
+
+  get '/calendar_events', to: 'calendar_events#index'
+  post '/calendar_events', to: 'calendar_events#create'
+  post '/calendar_events', to: 'calendar_events#update'
+
 end
