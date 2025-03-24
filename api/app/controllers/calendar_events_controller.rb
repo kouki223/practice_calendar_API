@@ -14,6 +14,12 @@ class CalendarEventsController < ApplicationController
     calendar_event.save!
     render json: calendar_event
   end
+
+  def update
+    calendar_event = calendar_events.find(params[:id])
+    calendar_event = calendar_event.update!(calendar_event_params)
+    render json: calendar_event
+  end
   
   private
   
