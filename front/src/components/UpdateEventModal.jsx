@@ -1,81 +1,85 @@
-import { useState } from "react";
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-  Input,
-  Text,
-} from "@chakra-ui/react";
-
-export const CreateEventModal = ({ isOpen, onClose, createEvent }) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-
-  const clearEvent = () => {
-    setTitle("");
-    setDescription("");
-    setStartDate("");
-    setEndDate("");
-  };
-
-  return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered>
-      <ModalOverlay>
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    Button,
+    Input,
+    Text,
+  } from "@chakra-ui/react";
+  
+  export const UpdateEventModal = ({
+    isOpen,
+    onClose,
+    updateEvent,
+    updateTitle,
+    updateEventId,
+    updateDescription,
+    updateStartDate,
+    updateEndDate,
+    setTitle,
+    setDescription,
+    setStartDate,
+    setEndDate,
+  }) => {
+    return (
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
         <ModalContent>
-          <ModalHeader>イベントを追加</ModalHeader>
+          <ModalHeader>イベントを更新</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Text fontWeight="bold">タイトル</Text>
             <Input
               placeholder="タイトル"
-              value={title}
+              value={updateTitle}
               onChange={(event) => setTitle(event.target.value)}
               mb="16px"
             />
             <Text fontWeight="bold">ディスクリプション</Text>
             <Input
               placeholder="ディスクリプション"
-              value={description}
+              value={updateDescription}
               onChange={(event) => setDescription(event.target.value)}
               mb="16px"
             />
             <Text fontWeight="bold">予定開始日付</Text>
             <Input
-              value={startDate}
+              value={updateStartDate}
               type="date"
               mb="16px"
               onChange={(e) => setStartDate(e.target.value)}
             />
             <Text fontWeight="bold">予定終了日付</Text>
             <Input
-              value={endDate}
+              value={updateEndDate}
               type="date"
               mb="16px"
               onChange={(e) => setEndDate(e.target.value)}
             />
           </ModalBody>
-
+  
           <ModalFooter>
             <Button
               colorScheme="blue"
               onClick={() => {
-                createEvent({ title, description, startDate, endDate });
-                clearEvent();
+                updateEvent({
+                  updateEventId,
+                  updateTitle,
+                  updateDescription,
+                  updateStartDate,
+                  updateEndDate,
+                });
                 onClose();
               }}
             >
-              イベントを追加
+              イベントを更新
             </Button>
           </ModalFooter>
         </ModalContent>
-      </ModalOverlay>
-    </Modal>
-  );
-};
+      </Modal>
+    );
+  };

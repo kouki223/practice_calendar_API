@@ -1,6 +1,6 @@
 class CalendarEventsController < ApplicationController
 
-  before_action :authentivate_user!
+  before_action :authenticate_user!
 
   def index
     user_id = current_user.id
