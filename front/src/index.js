@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./routes/SignUp";
 import Calendar from "./routes/Calendar";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ChakraProvider>
+  <ChakraProvider value={defaultSystem}>
     <React.StrictMode>
       <BrowserRouter>
         <Routes>
